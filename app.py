@@ -1,10 +1,13 @@
 from flask import Flask, render_template, jsonify, request
 from IntelNeg import neighbors, binary_to_pandas_with_stats, computeManhattanDistance, movie_lens_to_binary
+from flask_cors import CORS
+
 
 app = Flask(__name__)
+CORS(app)
 
-movie_lens_to_binary('ratings.dat', 'ratings.bin')
-consolidate = binary_to_pandas_with_stats('ratings.bin')
+#movie_lens_to_binary('ratings.dat', 'ratings.bin')
+#consolidate = binary_to_pandas_with_stats('ratings.bin')
 
 @app.route("/", methods=['POST','GET'])
 def hello():
@@ -16,6 +19,17 @@ def hello():
         return jsonify(response_data)
 
     return render_template('index.html')
+
+
+@app.route('/data', methods=['GET'])
+def get_data():
+    data = {
+        'message': 'si llego'
+    }
+    return jsonify(data)
+
+
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80, debug=True)
