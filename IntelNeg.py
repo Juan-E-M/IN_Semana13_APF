@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-def movie_lens_to_binary(input_file, output_file, start_user_id=1, end_user_id=7539):
+def movie_lens_to_binary(input_file, output_file, start_user_id=1, end_user_id=14591):
     # Load MovieLens data using Pandas
     ratings = pd.read_csv(input_file, sep='\t', header=None,
                           names=['userId', 'movieId', 'rating', 'rating_timestamp'])
