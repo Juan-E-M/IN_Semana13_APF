@@ -16,7 +16,7 @@ def extract_user_data_from_dat(dat_file, user_id):
     consolidated_user_df = user_data.groupby(['userId', 'movieId'])['rating'].mean().unstack()
     return consolidated_user_df
 
-def merge_dataframes_with_stats_and_user(bin_df, user_id):
+def merge_dataframes_with_stats_and_user(bin_df, user_df):
     merged_df = pd.concat([bin_df, user_df], axis=1)
     return merged_df
 
@@ -42,7 +42,7 @@ def get_data():
     check = check_user_in_dataframe(consolidate,user_id)
     if check:
         user_df = extract_user_data_from_dat('ratings.dat',user_id)
-        consolidate2 = merge_dataframes_with_stats_and_user(consolidate, user_id)
+        consolidate2 = merge_dataframes_with_stats_and_user(consolidate, user_df)
     else:
         consolidate2 = consolidate
     vecinos = neighbors(user1, consolidate, computeManhattanDistance)
