@@ -1,7 +1,8 @@
 from flask import Flask, render_template, jsonify, request
 from IntelNeg import neighbors, binary_to_pandas_with_stats, computeManhattanDistance, movie_lens_to_binary
 from flask_cors import CORS
-
+import pandas as pd
+import numpy as np
 
 app = Flask(__name__)
 CORS(app)
@@ -46,7 +47,7 @@ def get_data():
         consolidate2 = consolidate
     vecinos = neighbors(user1, consolidate, computeManhattanDistance)
     response_data = {'data': vecinos}
-    vecinos = computeNearestNeighbor(user_id, consolidate2, computeManhattanDistance):
+    vecinos = computeNearestNeighbor(user_id, consolidate2, computeManhattanDistance)
     return jsonify(vecinos)
 
 if __name__ == "__main__":
