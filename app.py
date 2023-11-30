@@ -45,8 +45,6 @@ def get_data():
         consolidate2 = merge_dataframes_with_stats_and_user(consolidate, user_df)
     else:
         consolidate2 = consolidate
-    vecinos = neighbors(user1, consolidate, computeManhattanDistance)
-    response_data = {'data': vecinos}
     vecinos = computeNearestNeighbor(user_id, consolidate2, computeManhattanDistance)
     return jsonify(vecinos)
 
