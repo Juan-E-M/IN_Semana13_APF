@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request
-from IntelNeg import neighbors, binary_to_pandas_with_stats, computeManhattanDistance, movie_lens_to_binary
+from IntelNeg import neighbors, binary_to_pandas_with_stats, computeManhattanDistance, movie_lens_to_binary, computeNearestNeighbor
 from flask_cors import CORS
 import pandas as pd
 import numpy as np
